@@ -18,6 +18,9 @@ int main () {
     std::cerr << "ImGui initialization failed!" << std::endl;
   }
 
+  ImGuiIO& io = ImGui::GetIO(); (void)io;
+  io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+  io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
   Gui gui;
 
   sf::Clock deltaClock;
@@ -34,9 +37,10 @@ int main () {
       }
     }
     ImGui::SFML::Update(window, deltaClock.restart());
+    ImGui::DockSpaceOverViewport();
     window.clear(sf::Color(51, 51, 51, 255));
     gui.display();
-    // TODO: display everything in the main window here
+    // TODO: display everything from the main window here
     ImGui::SFML::Render(window);
     window.display();
   }

@@ -10,4 +10,5 @@ public:
   void display();
   void displayMenuBar();
   void displayTestWindow();
+  void displayTestWindow2();
 };
