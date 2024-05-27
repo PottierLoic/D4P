@@ -6,6 +6,8 @@
 #include <imgui-SFML.h>
 #include <imgui.h>
 
+#include "gui.hpp"
+
 int main () {
   sf::ContextSettings settings;
   settings.antialiasingLevel = 8;
@@ -15,6 +17,8 @@ int main () {
   if(!ImGui::SFML::Init(window)) {
     std::cerr << "ImGui initialization failed!" << std::endl;
   }
+
+  Gui gui;
 
   sf::Clock deltaClock;
   while(window.isOpen()) {
@@ -31,7 +35,7 @@ int main () {
     }
     ImGui::SFML::Update(window, deltaClock.restart());
     window.clear(sf::Color(51, 51, 51, 255));
-    // TODO: call menu display here
+    gui.display();
     // TODO: display everything in the main window here
     ImGui::SFML::Render(window);
     window.display();
