@@ -33,6 +33,7 @@ private:
   // TODO: remove once there are real stats to use (build class)
   int tmp1 = 0;
   int tmp2 = 0;
+  bool tmp3 = false;
 
   std::string saveName; // buffer for build name in save as menu
 };
