@@ -393,7 +393,7 @@ void Gui::displayCalculations() {
 
 void Gui::displayNotes() {
   if (ImGui::Begin("Notes")) {
-    // TODO
+    ImGui::InputTextMultiline("##note-input", notesText, IM_ARRAYSIZE(notesText), ImVec2(-FLT_MIN, ImGui::GetTextLineHeight() * 32));
   }
   ImGui::End();
 }
