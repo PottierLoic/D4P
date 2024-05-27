@@ -1,5 +1,7 @@
 #include "gui.hpp"
 
+const char* worldTiers[] = { "World Tier 1", "World Tier 2", "World Tier 3", "World Tier 4" };
+
 void Gui::display() {
   displayBar();
   if (showSaveAs) { displaySaveAs(); }
@@ -9,6 +11,7 @@ void Gui::display() {
   if (showItems) { displayItems(); }
   if (showConfiguration) { displayConfiguration(); }
   if (showCalculations) { displayCalculations(); }
+  if (showNotes) { displayNotes(); }
 }
 
 void Gui::displayBar() {
@@ -35,7 +38,7 @@ void Gui::displaySaveAs() {
     ImGui::SameLine();
     if (ImGui::Button("Save")) {
       // TODO: Implement save as function
-      std::cout << "Save as button pressed" << std::endl; 
+      std::cout << "Save as button pressed" << std::endl;
     }
   }
   ImGui::End();
@@ -43,9 +46,193 @@ void Gui::displaySaveAs() {
 
 void Gui::displayStats() {
   if (ImGui::Begin("Statistics")) {
-    // TODO
-    ImGui::Text("Health");
-    ImGui::Text("Cheese");
+    // TODO: Replace with real values from actual build
+    ImGui::SeparatorText("Core Stats");
+    ImGui::Text("Level");
+    ImGui::SameLine(240);
+    ImGui::Text("%d", static_cast<int>(stats));
+    ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(255, 80, 80, 255));
+    ImGui::Text("Strength");
+    ImGui::SameLine(240);
+    ImGui::Text("%d", static_cast<int>(stats));
+    ImGui::PopStyleColor();
+    ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(51, 253, 255, 255));
+    ImGui::Text("Intelligence");
+    ImGui::SameLine(240);
+    ImGui::Text("%d", static_cast<int>(stats));
+    ImGui::PopStyleColor();
+    ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(255, 255, 102, 255));
+    ImGui::Text("Willpower");
+    ImGui::SameLine(240);
+    ImGui::Text("%d", static_cast<int>(stats));
+    ImGui::PopStyleColor();
+    ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(102, 255, 102, 255));
+    ImGui::Text("Dexterity");
+    ImGui::SameLine(240);
+    ImGui::Text("%d", static_cast<int>(stats));
+    ImGui::PopStyleColor();
+
+    ImGui::SeparatorText("Resistances");
+    ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(255, 80, 80, 255));
+    ImGui::Text("Fire Resistance");
+    ImGui::SameLine(240);
+    ImGui::Text("%d%%", static_cast<int>(stats));
+    ImGui::PopStyleColor();
+    ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(255, 255, 102, 255));
+    ImGui::Text("Lightning Resistance");
+    ImGui::SameLine(240);
+    ImGui::Text("%d%%", static_cast<int>(stats));
+    ImGui::PopStyleColor();
+    ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(51, 253, 255, 255));
+    ImGui::Text("Cold Resistance");
+    ImGui::SameLine(240);
+    ImGui::Text("%d%%", static_cast<int>(stats));
+    ImGui::PopStyleColor();
+    ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(102, 255, 102, 255));
+    ImGui::Text("Poison Resistance");
+    ImGui::SameLine(240);
+    ImGui::Text("%d%%", static_cast<int>(stats));
+    ImGui::PopStyleColor();
+    ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(204, 153, 255, 255));
+    ImGui::Text("Shadow Resistance");
+    ImGui::SameLine(240);
+    ImGui::Text("%d%%", static_cast<int>(stats));
+    ImGui::PopStyleColor();
+
+    ImGui::SeparatorText("Offensive");
+    ImGui::Text("Ranged Weapon Damage");
+    ImGui::SameLine(240);
+    ImGui::Text("%d", static_cast<int>(stats));
+    ImGui::Text("Dual Wielded Weapon Damage");
+    ImGui::SameLine(240);
+    ImGui::Text("%d", static_cast<int>(stats));
+    ImGui::Text("Weapon Speed");
+    ImGui::SameLine(240);
+    ImGui::Text("%.2f", static_cast<float>(stats));
+    ImGui::Text("Attack Speed Bonus");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Attack Speed from Dodging");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Critical Strike Chance");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Critical Strike Damage");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Overpower Chance");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Overpower Damage");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Vulnerable Damage");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("All Damage");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Damage with Physical");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Damage with Marksman");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Damage vs Close");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Damage vs Distant");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Damage vs Elites");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Damage vs Crowd Controlled");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Damage vs Healthy");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Thorns");
+    ImGui::SameLine(240);
+    ImGui::Text("%d", static_cast<int>(stats));
+
+    ImGui::SeparatorText("Defensive");
+    ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(255, 80, 80, 255));
+    ImGui::Text("Maximum Life");
+    ImGui::SameLine(240);
+    ImGui::Text("%d", static_cast<int>(stats));
+    ImGui::PopStyleColor();
+    ImGui::Text("Potion Capacity");
+    ImGui::SameLine(240);
+    ImGui::Text("%d", static_cast<int>(stats));
+    ImGui::Text("Healing from Potions");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(255, 255, 204, 255));
+    ImGui::Text("Armor");
+    ImGui::SameLine(240);
+    ImGui::Text("%d", static_cast<int>(stats));
+    ImGui::PopStyleColor();
+    ImGui::Text("All Damage Reduction");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Damage Reduction from Elites");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Damage Reduction from Vulnerable");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Damage Reduction from Slowed");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Damage Reduction from Close");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Damage Reduction from Distant");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Dodge Chance");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+
+    ImGui::SeparatorText("Utility");
+    ImGui::Text("Maximum Energy");
+    ImGui::SameLine(240);
+    ImGui::Text("%d", static_cast<int>(stats));
+    ImGui::Text("Energy Regeneration");
+    ImGui::SameLine(240);
+    ImGui::Text("%d", static_cast<int>(stats));
+    ImGui::Text("Energy Generation");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Movement Speed");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Elite Kill Movement Speed");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Cooldown Reduction");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Imbuement Cooldown Reduction");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Lucky Hit Chance Bonus");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Lucky Hit Freeze");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+    ImGui::Text("Experience Bonus");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
+
+    ImGui::SeparatorText("PVP");
+    ImGui::Text("Damage Reduction");
+    ImGui::SameLine(240);
+    ImGui::Text("%.1f%%", static_cast<float>(stats));
   }
   ImGui::End();
 }
@@ -73,11 +260,11 @@ void Gui::displayItems() {
 }
 
 void Gui::displayConfiguration() {
-  if (ImGui::Begin("Configuration")) {
-    ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0,255,0,255));
+  if (ImGui::Begin("Configuration")) { 
     ImGui::Text("World Effects:");
-    ImGui::PopStyleColor();
+    ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0, 255, 0, 255));
     ImGui::SeparatorText("Altar Bonuses");
+    ImGui::PopStyleColor();
     //TODO: use real variables located in build class instead of tmp1/tmp2
     ImGui::Text("Strength");
     ImGui::SameLine(100);
@@ -103,7 +290,9 @@ void Gui::displayConfiguration() {
       tmp1 = 0;
       tmp2 = 0;
     }
+    ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(255, 0, 0, 255));
     ImGui::SeparatorText("Renown Bonuses");
+    ImGui::PopStyleColor();
     // TODO: use real variables located in build class instead of tmp3
     if (ImGui::BeginTable("##renown-bonuses", 5)) {
       // Table head
@@ -175,12 +364,35 @@ void Gui::displayConfiguration() {
     if (ImGui::Button("None##uncheck-all-renown-bonuses")) {
       tmp3 = false;
     }
+    ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(255, 255, 0, 255));
+    ImGui::SeparatorText("World Difficulty");
+    ImGui::PopStyleColor();
+    const char* worldTierPreviewValue = worldTiers[worldTierIndex];
+    if (ImGui::BeginCombo("##world-tier-list", worldTierPreviewValue)) {
+      for (int n = 0; n < IM_ARRAYSIZE(worldTiers); n++) {
+        const bool selected = (worldTierIndex == n);
+        if (ImGui::Selectable(worldTiers[n], selected)) {
+          worldTierIndex = n;
+        }
+        if (selected) {
+          ImGui::SetItemDefaultFocus();
+        }
+      }
+      ImGui::EndCombo();
+    } 
   }
   ImGui::End();
 }
 
 void Gui::displayCalculations() {
   if (ImGui::Begin("Calculations")) {
+    // TODO
+  }
+  ImGui::End();
+}
+
+void Gui::displayNotes() {
+  if (ImGui::Begin("Notes")) {
     // TODO
   }
   ImGui::End();
