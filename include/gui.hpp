@@ -30,5 +30,9 @@ private:
   bool showConfiguration = true;
   bool showCalculations = true;
 
+  // TODO: remove once there are real stats to use (build class)
+  int tmp1 = 0;
+  int tmp2 = 0;
+
   std::string saveName; // buffer for build name in save as menu
 };

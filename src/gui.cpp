@@ -74,7 +74,26 @@ void Gui::displayItems() {
 
 void Gui::displayConfiguration() {
   if (ImGui::Begin("Configuration")) {
-    // TODO
+    ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0,255,0,255));
+    ImGui::Text("World Effects:");
+    ImGui::PopStyleColor();
+    ImGui::SeparatorText("Altar Bonuses");
+    //TODO: use a real variable located in build class
+    ImGui::Text("Strength");
+    ImGui::SameLine(100);
+    ImGui::SliderInt("##altar-strength", &tmp1, 0, 68);
+    ImGui::Text("Intelligence");
+    ImGui::SameLine(100);
+    ImGui::SliderInt("##altar-intelligence", &tmp1, 0, 68);
+    ImGui::Text("Willpower");
+    ImGui::SameLine(100);
+    ImGui::SliderInt("##altar-willpower", &tmp1, 0, 68);
+    ImGui::Text("Dexterity");
+    ImGui::SameLine(100);
+    ImGui::SliderInt("##altar-dexterity", &tmp1, 0, 68);
+    ImGui::Text("Paragon points");
+    ImGui::SameLine(120);
+    ImGui::SliderInt("##altar-paragon", &tmp2, 0, 4);
   }
   ImGui::End();
 }
