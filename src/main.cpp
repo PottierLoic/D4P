@@ -11,7 +11,7 @@
 int main () {
   sf::ContextSettings settings;
   settings.antialiasingLevel = 8;
-  sf::RenderWindow window(sf::VideoMode(1920, 1080), "D4P", sf::Style::Default, settings);
+  sf::RenderWindow window(sf::VideoMode(1280, 720), "D4P", sf::Style::Default, settings);
   window.setFramerateLimit(120);
 
   if(!ImGui::SFML::Init(window)) {

@@ -10,11 +10,25 @@
 class Gui {
 public:
   void display();
-  void displayMenuBar();
-  void displaySaveAsMenu();
+  void displayBar();
+  void displaySaveAs();
+  void displayStats();
+  void displayImportExport();
+  void displaySkillTree();
+  void displayParagonTree();
+  void displayItems();
+  void displayConfiguration();
+  void displayCalculations();
 private:
-  bool showSaveMenu = false;
-  bool showSaveAsMenu = false;
+  // Determine if usefull
+  bool showSaveAs = false;
+  bool showStats = true;
+  bool showImportExport = true;
+  bool showSkillTree = true;
+  bool showParagonTree = true;
+  bool showItems = true;
+  bool showConfiguration = true;
+  bool showCalculations = true;
 
-  std::string saveName;
+  std::string saveName; // buffer for build name in save as menu
 };
