@@ -34,3 +34,4 @@
 # Build folder
 build/*
 imgui.ini
+data/*

@@ -17,5 +17,9 @@ void Skill::loadSkillTypes(const std::string& filePath) {
   }
 }
 
-Skill::Skill(std::string name, SkillType type, std::vector<std::string> tags) {}
+Skill::Skill(std::string name, SkillType type, std::vector<std::string> tags) {
+  name = name;
+  type = type;
+  tags = tags;
+}
 
