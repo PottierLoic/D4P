@@ -7,6 +7,7 @@
 #include <imgui.h>
 
 #include "gui.hpp"
+#include "build.hpp"
 
 int main () {
   sf::ContextSettings settings;
@@ -21,7 +22,9 @@ int main () {
   ImGuiIO& io = ImGui::GetIO(); (void)io;
   io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
   io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
-  Gui gui;
+
+  Build testBuild;
+  Gui gui(std::make_unique<Build>(testBuild));
 
   sf::Clock deltaClock;
   while(window.isOpen()) {

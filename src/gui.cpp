@@ -2,16 +2,20 @@
 
 const char* worldTiers[] = { "World Tier 1", "World Tier 2", "World Tier 3", "World Tier 4" };
 
+Gui::Gui(std::unique_ptr<Build> build) {
+  this->currentBuild = std::move(build);
+}
+
 void Gui::display() {
   displayBar();
   if (showSaveAs) { displaySaveAs(); }
-  if (showStats) { displayStats(); }
-  if (showSkillTree) { displaySkillTree(); }
-  if (showParagonTree) { displayParagonTree(); }
-  if (showItems) { displayItems(); }
-  if (showConfiguration) { displayConfiguration(); }
-  if (showCalculations) { displayCalculations(); }
-  if (showNotes) { displayNotes(); }
+  displayStats();
+  displaySkillTree();
+  displayParagonTree();
+  displayItems();
+  displayConfiguration();
+  displayCalculations();
+  displayNotes();
 }
 
 void Gui::displayBar() {
