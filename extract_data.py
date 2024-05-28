@@ -25,7 +25,6 @@ def download_json(url, local_file):
   with open(local_file, 'w', encoding='utf-8') as f:
     json.dump(response.json(), f, indent=4)
 
-
 def main():
   url = 'https://raw.githubusercontent.com/Lothrik/diablo4-build-calc/master/database/build-52025.json'
   dl_file = 'data/downloaded.json'

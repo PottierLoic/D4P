@@ -7,6 +7,7 @@
 #include <imgui.h>
 
 #include "gui.hpp"
+#include "class.hpp"
 #include "build.hpp"
 #include "skill.hpp"
 
@@ -24,7 +25,7 @@ int main () {
   io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
   io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
-  Build testBuild;
+  Build testBuild(Class::BARBARIAN);
   Gui gui(std::make_unique<Build>(testBuild));
 
   sf::Clock deltaClock;

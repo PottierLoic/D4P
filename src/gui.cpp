@@ -54,7 +54,7 @@ void Gui::displayStats() {
     ImGui::SeparatorText("Core Stats");
     ImGui::Text("Level");
     ImGui::SameLine(240);
-    ImGui::Text("%d", static_cast<int>(stats));
+    ImGui::Text("%d", static_cast<int>(currentBuild->getProperty("level")));
     ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(255, 80, 80, 255));
     ImGui::Text("Strength");
     ImGui::SameLine(240);
@@ -264,7 +264,7 @@ void Gui::displayItems() {
 }
 
 void Gui::displayConfiguration() {
-  if (ImGui::Begin("Configuration")) { 
+  if (ImGui::Begin("Configuration")) {
     ImGui::Text("World Effects:");
     ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0, 255, 0, 255));
     ImGui::SeparatorText("Altar Bonuses");
