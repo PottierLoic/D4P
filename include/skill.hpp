@@ -1,10 +1,32 @@
 #pragma once
 
 #include <string>
+#include <vector>
+#include <fstream>
+#include <stdexcept>
+#include <iostream>
+
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
+
+enum SkillType {
+  Basic,
+  Core,
+  Defensive,
+  Brawling,
+  WeaponMastery,
+  Ultimate,
+  KeyPassive,
+};
 
 class Skill {
 public:
-  std::string name;
+  static void loadSkillTypes(const std::string& filePath);
+  static std::vector<std::string> skillTypeList;
 
-  Skill();
+  std::string name;
+  std::string type;
+  std::vector<std::string> tags;
+  Skill(std::string name, SkillType type, std::vector<std::string> tags);
 };

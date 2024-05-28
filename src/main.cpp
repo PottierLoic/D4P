@@ -8,6 +8,7 @@
 
 #include "gui.hpp"
 #include "build.hpp"
+#include "skill.hpp"
 
 int main () {
   sf::ContextSettings settings;

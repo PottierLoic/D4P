@@ -7,3 +7,6 @@
 [submodule "imgui-sfml"]
 	path = libs/imgui-sfml
 	url = https://github.com/SFML/imgui-sfml
+[submodule "json"]
+	path = libs/json
+	url = https://github.com/nlohmann/json/
