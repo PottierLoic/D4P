@@ -1,33 +1,83 @@
 #include "build.hpp"
 
-Build::Build(Class cl) {
-  this->buildClass = cl;
-  setBaseStats();
-  setProperty("level", 1);
+Build::Build(std::string name, Class cl) {
+  this->name = name;
+  this->setClass(cl);
+  this->initAilments();
+  setStatistic("level", 1);
 }
 
-void Build::setProperty(const std::string& key, const float value) {
-  properties[key] = value;
+void Build::setName(const std::string name) {
+  this->name = name;
 }
 
-float Build::getProperty(const std::string& key) const {
-  auto it = properties.find(key);
-  if (it != properties.end()) {
+std::string Build::getName() {
+  return this->name;
+}
+
+void Build::setStatistic(const std::string& key, const float value) {
+  statistics[key] = value;
+}
+
+float Build::getStatistic(const std::string& key) const {
+  auto it = statistics.find(key);
+  if (it != statistics.end()) {
     return it->second;
   }
   return 0.0f;
 }
 
-void Build::printProperties() const {
-  for (const auto& pair : properties) {
-    std::cout << pair.first << ": " << pair.second << std::endl;
-  }
+void Build::setPlayerAilment(const std::string& key, const bool value) {
+  playerAilments[key] = value;
+}
+
+std::map<std::string, bool>& Build::getPlayerAilments() {
+  return playerAilments;
+}
+
+void Build::setEnemyAilment(const std::string& key, const bool value) {
+  enemyAilments[key] = value;
+}
+
+std::map<std::string, bool>& Build::getEnemyAilments() {
+  return enemyAilments;
+}
+
+void Build::setClass(const Class cl) {
+  this->buildClass = cl;
+  this->setBaseStats();
+}
+
+Class Build::getClass() const {
+  return this->buildClass;
 }
 
 void Build::setBaseStats() {
   BaseStats stats = classStats[buildClass];
-  setProperty("base-strength", stats.strength);
-  setProperty("base-dexterity", stats.dexterity);
-  setProperty("base-intelligence", stats.intelligence);
-  setProperty("base-willpower", stats.willpower);
+  setStatistic("base-strength", stats.strength);
+  setStatistic("base-dexterity", stats.dexterity);
+  setStatistic("base-intelligence", stats.intelligence);
+  setStatistic("base-willpower", stats.willpower);
 }
+
+void Build::initAilments() {
+  std::map<std::string, bool> tmp = {
+    {"chilled", false},
+    {"frozen", false},
+    {"immune", false},
+    {"unstoppable", false},
+    {"vulnerable", false},
+    {"fortified", false},
+    {"berserking", false},
+    {"barrier", false},
+    {"blood orb", false},
+    {"crackling energy", false},
+    {"dazed", false},
+    {"healthy", false},
+    {"injured", false},
+    {"overpower", false},
+    {"stealth", false}
+  };
+  playerAilments = tmp;
+  enemyAilments = tmp;
+};

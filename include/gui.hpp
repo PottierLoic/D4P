@@ -46,6 +46,7 @@ private:
   const char* worldTierValue = worldTiers[worldTierIndex];
   float stats = 100.0;
   char notesText[1024 * 32] = "Example text";
+  bool tmp4 = false;
 
   std::string saveName; // buffer for build name in save as menu
 };

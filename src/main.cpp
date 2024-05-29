@@ -25,7 +25,7 @@ int main () {
   io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
   io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
-  Build testBuild(Class::BARBARIAN);
+  Build testBuild("test", Class::BARBARIAN);
   Gui gui(std::make_unique<Build>(testBuild));
 
   sf::Clock deltaClock;
