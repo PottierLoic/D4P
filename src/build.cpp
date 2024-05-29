@@ -7,14 +7,6 @@ Build::Build(std::string name, Class cl) {
   setStatistic("level", 1);
 }
 
-void Build::setName(const std::string name) {
-  this->name = name;
-}
-
-std::string Build::getName() {
-  return this->name;
-}
-
 void Build::setStatistic(const std::string& key, const float value) {
   statistics[key] = value;
 }

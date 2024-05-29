@@ -22,7 +22,7 @@ void Gui::displayBar() {
   if (ImGui::BeginMainMenuBar()) {
     if (ImGui::MenuItem("Back")) {}
     char label[128];
-    snprintf(label, sizeof(label), "Current build: %s", currentBuild->getName().c_str());
+    snprintf(label, sizeof(label), "Current build: %s", currentBuild->name.c_str());
     ImGui::MenuItem(label, NULL, false, false);
     if (ImGui::MenuItem("Save")) {
       // TODO: Implement save function

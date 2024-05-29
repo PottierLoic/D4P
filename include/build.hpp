@@ -3,34 +3,32 @@
 #include <string>
 #include <map>
 #include <iostream>
+#include <vector>
 
 #include "class.hpp"
+#include "item.hpp"
 
 class Build {
 public:
+  std::string name;
+
   Build(std::string name, Class cl);
 
-  void setName(const std::string name);
-  std::string getName();
-
+  void setClass(const Class cl);
+  Class getClass() const;
   void setStatistic(const std::string& key, const float value);
   float getStatistic(const std::string& key) const;
 
   void setPlayerAilment(const std::string& key, const bool value);
-  std::map<std::string, bool>& getPlayerAilments(); // TODO: remove this bullshit function erk
-
+  std::map<std::string, bool>& getPlayerAilments();
   void setEnemyAilment(const std::string& key, const bool value);
-  std::map<std::string, bool>& getEnemyAilments(); // TODO: remove this bullshit function erk
-
-  void setClass(const Class cl);
-  Class getClass() const;
-
+  std::map<std::string, bool>& getEnemyAilments();
 private:
-  std::string name;
   Class buildClass;
-  std::map<std::string, float> statistics;
-  std::map<std::string, bool> playerAilments;
-  std::map<std::string, bool> enemyAilments;
+
+  std::map<std::string, float> statistics; /** full stats list of the build */
+  std::map<std::string, bool> playerAilments; /** Ailments applied to the player */
+  std::map<std::string, bool> enemyAilments; /** Ailments applied to the enemy*/
 
   void setBaseStats(); // called in setClass only
   void initAilments(); // called in constructor only
