@@ -1,7 +1,9 @@
 # D4P - Diablo 4 Planner
 
-D4P is a build planner for the game Diablo 4.  
-It is heavily inspired by Path of Building.  
+D4P is a WIP build planner for the game Diablo 4.  
+It is heavily inspired by Path of Building.
+
+Please note that this is a solo project and is currently a work in progress. It will take a long time before a fully usable version is released, if any.
 
 ## Building from source
 
